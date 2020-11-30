@@ -1,4 +1,4 @@
-package com.dto;
+package com.idrot;
 
 /**
  * 文章查询条件

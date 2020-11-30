@@ -1,4 +1,4 @@
-package com.dto;
+package com.idrot;
 
 /**
  * 公共属性的类

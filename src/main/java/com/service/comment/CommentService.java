@@ -1,6 +1,6 @@
 package com.service.comment;
 
-import com.dto.CommentCond;
+import com.idrot.CommentCond;
 import com.model.CommentDomain;
 import com.github.pagehelper.PageInfo;
 

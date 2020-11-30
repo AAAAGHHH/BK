@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.dto.MetaDto;
+import com.idrot.MetaDto;
 import com.exception.BusinessException;
 import com.exception.Types;
 import com.exception.WebConst;

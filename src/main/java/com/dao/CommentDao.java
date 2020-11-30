@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.dto.CommentCond;
+import com.idrot.CommentCond;
 import com.model.CommentDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

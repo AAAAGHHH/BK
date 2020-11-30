@@ -1,7 +1,7 @@
 package com.controller;
 
-import com.dto.ContentCond;
-import com.dto.MetaCond;
+import com.idrot.ContentCond;
+import com.idrot.MetaCond;
 import com.exception.LogActions;
 import com.exception.Types;
 import com.model.ContentDomain;

@@ -107,7 +107,7 @@
     </update>
     
     <!--根据条件查询文章-->
-    <select id="getArticleByCond" resultType="com.model.ContentDomain" parameterType="com.dto.ContentCond">
+    <select id="getArticleByCond" resultType="com.model.ContentDomain" parameterType="com.idrot.ContentCond">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM

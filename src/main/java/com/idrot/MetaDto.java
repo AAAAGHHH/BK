@@ -1,5 +1,5 @@
 
- package com.dto;
+ package com.idrot;
 
 import com.model.MetaDomain;
 

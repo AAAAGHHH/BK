@@ -1,7 +1,7 @@
 package com.interceptor;
 
-import com.dto.MetaDto;
-import com.dto.StatisticsDto;
+import com.idrot.MetaDto;
+import com.idrot.StatisticsDto;
 import com.exception.Types;
 import com.exception.WebConst;
 import com.model.OptionsDomain;

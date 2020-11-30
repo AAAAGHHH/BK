@@ -1,7 +1,7 @@
 package com.controller;
 
-import com.dto.ContentCond;
-import com.dto.MetaDto;
+import com.idrot.ContentCond;
+import com.idrot.MetaDto;
 import com.exception.BusinessException;
 import com.exception.ErrorConstant;
 import com.exception.Types;

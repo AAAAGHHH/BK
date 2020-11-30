@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.dto.ContentCond;
+import com.idrot.ContentCond;
 import com.model.ContentDomain;
 import com.model.RelationShipDomain;
 import org.apache.ibatis.annotations.Mapper;

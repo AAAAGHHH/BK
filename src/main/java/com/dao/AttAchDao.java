@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.dto.AttAchDto;
+import com.idrot.AttAchDto;
 import com.model.AttAchDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

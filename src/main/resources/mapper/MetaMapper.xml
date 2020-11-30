@@ -72,7 +72,7 @@
     </insert>
     
     <!--根据条件获取项目-->
-    <select id="getMetasByCond" resultType="com.model.MetaDomain" parameterType="com.dto.MetaCond">
+    <select id="getMetasByCond" resultType="com.model.MetaDomain" parameterType="com.idrot.MetaCond">
         SELECT
           <include refid="BASE_COLUMN" />
         FROM
@@ -107,7 +107,7 @@
         <result column="parent" jdbcType="INTEGER" property="parent"/>
     </resultMap>
     
-    <resultMap id="MetaDto" type="com.dto.MetaDto" extends="BaseResultMap">
+    <resultMap id="MetaDto" type="com.idrot.MetaDto" extends="BaseResultMap">
         <result column="count" property="count" jdbcType="INTEGER" />
     </resultMap>
     

@@ -1,7 +1,7 @@
 package com.service.comment;
 
 import com.dao.CommentDao;
-import com.dto.CommentCond;
+import com.idrot.CommentCond;
 import com.exception.BusinessException;
 import com.exception.ErrorConstant;
 import com.model.CommentDomain;

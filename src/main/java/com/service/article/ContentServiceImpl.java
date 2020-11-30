@@ -3,7 +3,7 @@ package com.service.article;
 import com.dao.CommentDao;
 import com.dao.ContentDao;
 import com.dao.RelationShipDao;
-import com.dto.ContentCond;
+import com.idrot.ContentCond;
 import com.exception.BusinessException;
 import com.exception.ErrorConstant;
 import com.exception.Types;

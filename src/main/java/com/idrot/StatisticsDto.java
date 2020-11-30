@@ -1,4 +1,4 @@
-package com.dto;
+package com.idrot;
 
 /**
  * 后台统计对象

@@ -1,6 +1,6 @@
 package com.service.article;
 
-import com.dto.ContentCond;
+import com.idrot.ContentCond;
 import com.model.ContentDomain;
 import com.model.MetaDomain;
 import com.github.pagehelper.PageInfo;

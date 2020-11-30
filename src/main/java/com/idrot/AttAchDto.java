@@ -1,4 +1,4 @@
-package com.dto;
+package com.idrot;
 
 public class AttAchDto extends BaseDto {
     /**

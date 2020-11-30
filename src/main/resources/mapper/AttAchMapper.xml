@@ -44,7 +44,7 @@
     </insert>
     
     <!--获取所有的附件信息-->
-    <select id="getAtts" resultType="com.dto.AttAchDto">
+    <select id="getAtts" resultType="com.idrot.AttAchDto">
         SELECT
             <trim suffix="" suffixOverrides=",">
                 <include refid="BASE_COLUMN"/>
@@ -69,7 +69,7 @@
     </select>
     
     <!--通过ID获取附件信息-->
-    <select id="getAttAchById" resultType="com.dto.AttAchDto">
+    <select id="getAttAchById" resultType="com.idrot.AttAchDto">
         SELECT
             <trim suffix="" suffixOverrides=",">
                 <include refid="BASE_COLUMN"/>

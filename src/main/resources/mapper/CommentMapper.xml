@@ -67,7 +67,7 @@
     </select>
     
     <!--根据条件查找评论列表-->
-    <select id="getCommentsByCond" resultType="com.model.CommentDomain" parameterType="com.dto.CommentCond">
+    <select id="getCommentsByCond" resultType="com.model.CommentDomain" parameterType="com.idrot.CommentCond">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM

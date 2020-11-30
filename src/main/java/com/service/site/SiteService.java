@@ -1,6 +1,6 @@
 package com.service.site;
 
-import com.dto.StatisticsDto;
+import com.idrot.StatisticsDto;
 import com.model.CommentDomain;
 import com.model.ContentDomain;
 

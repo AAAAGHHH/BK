@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.dto.CommentCond;
+import com.idrot.CommentCond;
 import com.model.CommentDomain;
 import com.model.UserDomain;
 import com.service.comment.CommentService;
