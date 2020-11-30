@@ -2,7 +2,7 @@ package com.service.meta;
 
 import com.idrot.MetaCond;
 import com.idrot.MetaDto;
-import com.model.MetaDomain;
+import com.entity.MetaDomain;
 
 import java.util.List;
 

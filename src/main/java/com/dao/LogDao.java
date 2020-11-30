@@ -1,7 +1,7 @@
 package com.dao;
 
 
-import com.model.LogDomain;
+import com.entity.LogDomain;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

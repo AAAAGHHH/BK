@@ -1,8 +1,8 @@
 package com.service.site;
 
 import com.idrot.StatisticsDto;
-import com.model.CommentDomain;
-import com.model.ContentDomain;
+import com.entity.CommentDomain;
+import com.entity.ContentDomain;
 
 import java.util.List;
 

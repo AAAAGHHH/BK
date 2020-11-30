@@ -2,13 +2,13 @@ package com.service.comment;
 
 import com.dao.CommentDao;
 import com.idrot.CommentCond;
-import com.exception.BusinessException;
-import com.exception.ErrorConstant;
-import com.model.CommentDomain;
-import com.model.ContentDomain;
+import com.exce.BusinessException;
+import com.exce.ErrorConstant;
+import com.entity.CommentDomain;
+import com.entity.ContentDomain;
 import com.service.article.ContentService;
-import com.utils.DateKit;
-import com.utils.TaleUtils;
+import com.utils.Dat;
+import com.utils.Tale;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -61,7 +61,7 @@ public class CommentServiceImpl implements CommentService {
         if (StringUtils.isBlank(comments.getAuthor())) {
             comments.setAuthor("热心网友");
         }
-        if (StringUtils.isNotBlank(comments.getEmail()) && !TaleUtils.isEmail(comments.getEmail())) {
+        if (StringUtils.isNotBlank(comments.getEmail()) && !Tale.isEmail(comments.getEmail())) {
             msg =  "请输入正确的邮箱格式";
         }
         if (StringUtils.isBlank(comments.getContent())) {
@@ -83,7 +83,7 @@ public class CommentServiceImpl implements CommentService {
     
         comments.setOwnerId(article.getAuthorId());
         comments.setStatus(STATUS_MAP.get(STATUS_BLANK));
-        comments.setCreated(DateKit.getCurrentUnixTime());
+        comments.setCreated(Dat.getCurrentUnixTime());
         commentDao.addComment(comments);
     
         ContentDomain temp = new ContentDomain();

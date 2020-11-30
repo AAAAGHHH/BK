@@ -12,7 +12,7 @@
     </sql> 
     
     <!--添加日志-->
-    <insert id="addLog" parameterType="com.model.LogDomain">
+    <insert id="addLog" parameterType="com.entity.LogDomain">
         INSERT INTO
           <include refid="BASE_TABLE"/>
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -27,7 +27,7 @@
         </trim>
     </insert>
     
-    <select id="getLogs" resultType="com.model.LogDomain">
+    <select id="getLogs" resultType="com.entity.LogDomain">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM

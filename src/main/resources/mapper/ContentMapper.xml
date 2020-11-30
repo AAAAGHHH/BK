@@ -19,7 +19,7 @@
     </sql>
     
     <!--添加文章-->
-    <insert id="addArticle" parameterType="com.model.ContentDomain" useGeneratedKeys="true" keyProperty="cid">
+    <insert id="addArticle" parameterType="com.entity.ContentDomain" useGeneratedKeys="true" keyProperty="cid">
         INSERT INTO
           <include refid="BASE_TABLE"/>
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -47,7 +47,7 @@
     </insert>
     
     <!--根据文章ID获取文章信息-->
-    <select id="getArticleById" resultType="com.model.ContentDomain">
+    <select id="getArticleById" resultType="com.entity.ContentDomain">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM
@@ -57,7 +57,7 @@
     </select>
     
     <!--根据文章ID更新文章-->
-    <update id="updateArticleById" parameterType="com.model.ContentDomain">
+    <update id="updateArticleById" parameterType="com.entity.ContentDomain">
         UPDATE
           <include refid="BASE_TABLE"/>
         <set>
@@ -107,7 +107,7 @@
     </update>
     
     <!--根据条件查询文章-->
-    <select id="getArticleByCond" resultType="com.model.ContentDomain" parameterType="com.idrot.ContentCond">
+    <select id="getArticleByCond" resultType="com.entity.ContentDomain" parameterType="com.idrot.ContentCond">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM
@@ -157,7 +157,7 @@
           <include refid="BASE_TABLE"/>
     </select>
     <!--通过分类获取文章-->
-    <select id="getArticleByCategory" resultType="com.model.ContentDomain">
+    <select id="getArticleByCategory" resultType="com.entity.ContentDomain">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM
@@ -167,7 +167,7 @@
     </select>
     
     <!--通过标签获取 文章-->
-    <select id="getArticleByTags" resultType="com.model.ContentDomain">
+    <select id="getArticleByTags" resultType="com.entity.ContentDomain">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM

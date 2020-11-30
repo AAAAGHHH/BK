@@ -2,14 +2,14 @@ package com.controller;
 
 import com.idrot.ContentCond;
 import com.idrot.MetaCond;
-import com.exception.LogActions;
-import com.exception.Types;
-import com.model.ContentDomain;
-import com.model.MetaDomain;
+import com.exce.LogActions;
+import com.exce.Types;
+import com.entity.ContentDomain;
+import com.entity.MetaDomain;
 import com.service.article.ContentService;
 import com.service.log.LogService;
 import com.service.meta.MetaService;
-import com.utils.APIResponse;
+import com.utils.Res;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -86,7 +86,7 @@ public class ArticleController extends BaseController {
     @ApiOperation("编辑保存文章")
     @PostMapping("/modify")
     @ResponseBody
-    public APIResponse modifyArticle(
+    public Res modifyArticle(
             HttpServletRequest request,
             @ApiParam(name = "cid", value = "文章主键", required = true)
             @RequestParam(name = "cid", required = true)
@@ -132,14 +132,14 @@ public class ArticleController extends BaseController {
         contentDomain.setAllowComment(allowComment ? 1: 0);
         contentService.updateArticleById(contentDomain);
 
-        return APIResponse.success();
+        return Res.success();
     }
 
 
     @ApiOperation("发布新文章")
     @PostMapping(value = "/publish")
     @ResponseBody
-    public APIResponse publishArticle(
+    public Res publishArticle(
             @ApiParam(name = "title", value = "标题", required = true)
             @RequestParam(name = "title", required = true)
             String title,
@@ -185,13 +185,13 @@ public class ArticleController extends BaseController {
         // 添加文章
         contentService.addArticle(contentDomain);
 
-        return APIResponse.success();
+        return Res.success();
     }
 
     @ApiOperation("删除文章")
     @PostMapping("/delete")
     @ResponseBody
-    public APIResponse deleteArticle(
+    public Res deleteArticle(
             @ApiParam(name = "cid", value = "文章ID", required = true)
             @RequestParam(name = "cid", required = true)
             Integer cid,
@@ -201,7 +201,7 @@ public class ArticleController extends BaseController {
         contentService.deleteArticleById(cid);
         // 写入日志
         logService.addLog(LogActions.DEL_ARTICLE.getAction(), cid+"",request.getRemoteAddr(),this.getUid(request));
-        return APIResponse.success();
+        return Res.success();
     }
 
 

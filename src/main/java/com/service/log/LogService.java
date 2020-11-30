@@ -1,7 +1,7 @@
 package com.service.log;
 
 
-import com.model.LogDomain;
+import com.entity.LogDomain;
 import com.github.pagehelper.PageInfo;
 
 /**

@@ -1,7 +1,7 @@
 package com.service.log;
 
 import com.dao.LogDao;
-import com.model.LogDomain;
+import com.entity.LogDomain;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

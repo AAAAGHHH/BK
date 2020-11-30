@@ -1,8 +1,8 @@
 package com.service.article;
 
 import com.idrot.ContentCond;
-import com.model.ContentDomain;
-import com.model.MetaDomain;
+import com.entity.ContentDomain;
+import com.entity.MetaDomain;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;

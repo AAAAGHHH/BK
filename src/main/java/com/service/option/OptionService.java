@@ -1,6 +1,6 @@
 package com.service.option;
 
-import com.model.OptionsDomain;
+import com.entity.OptionsDomain;
 
 import java.util.List;
 import java.util.Map;

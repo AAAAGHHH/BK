@@ -1,15 +1,15 @@
 package com.controller;
 
-import com.model.UserDomain;
-import com.utils.MapCache;
-import com.utils.TaleUtils;
+import com.entity.UserDomain;
+import com.utils.Cache;
+import com.utils.Tale;
 
 import javax.servlet.http.HttpServletRequest;
 
 public abstract class BaseController {
 
 
-    protected MapCache cache = MapCache.single();
+    protected Cache cache = Cache.single();
 
 
     public BaseController title(HttpServletRequest request, String title) {
@@ -23,7 +23,7 @@ public abstract class BaseController {
      * @return
      */
     public UserDomain user(HttpServletRequest request) {
-        return TaleUtils.getLoginUser(request);
+        return Tale.getLoginUser(request);
     }
 
     /**

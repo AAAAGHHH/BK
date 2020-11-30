@@ -2,7 +2,7 @@ package com.utils;
 
 import com.github.pagehelper.PageInfo;
 import com.vdurmont.emoji.EmojiParser;
-import com.exception.WebConst;
+import com.exce.WebConst;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +25,7 @@ public class Commons {
      * @return
      */
     public static String random(int max, String str) {
-        return UUID.random(1,max) + str;
+        return Id.random(1,max) + str;
     }
 
     public static String random(Long seed, int max, String str) {
@@ -56,7 +56,7 @@ public class Commons {
         if (StringUtils.isBlank(email)) {
             email = "864655735@qq.com";
         }
-        String hash = TaleUtils.MD5encode(email.trim().toLowerCase());
+        String hash = Tale.MD5encode(email.trim().toLowerCase());
         return avatarUrl + hash + ".png";
     }
 
@@ -68,7 +68,7 @@ public class Commons {
      */
     public static String fmtdate(Integer unixTime, String patten) {
         if (null != unixTime && StringUtils.isNotBlank(patten)) {
-            return DateKit.formatDateByUnixTime(unixTime,patten);
+            return Dat.formatDateByUnixTime(unixTime,patten);
         }
         return "";
     }
@@ -175,7 +175,7 @@ public class Commons {
         if (StringUtils.isNotBlank(value)) {
             value = value.replace("<!--more-->", "\r\n");
             value = value.replace("<!-- more -->", "\r\n");
-            return TaleUtils.mdToHtml(value);
+            return Tale.mdToHtml(value);
         }
         return "";
     }

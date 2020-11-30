@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.wip.dao")
+@MapperScan("com.dao")
 //@EnableCaching
 public class MyBlogApplication {
 

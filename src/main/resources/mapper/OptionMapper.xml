@@ -12,7 +12,7 @@
     </sql> 
     
     <!--查找全部配置信息-->
-    <select id="getOptions" resultType="com.model.OptionsDomain">
+    <select id="getOptions" resultType="com.entity.OptionsDomain">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM
@@ -36,7 +36,7 @@
     </update>
     
     <!--通过名称网站配置-->
-    <select id="getOptionByName" resultType="com.model.OptionsDomain">
+    <select id="getOptionByName" resultType="com.entity.OptionsDomain">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM

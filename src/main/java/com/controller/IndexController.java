@@ -2,19 +2,19 @@ package com.controller;
 
 
 import com.idrot.StatisticsDto;
-import com.exception.BusinessException;
-import com.exception.LogActions;
-import com.exception.WebConst;
-import com.model.CommentDomain;
-import com.model.ContentDomain;
-import com.model.LogDomain;
-import com.model.UserDomain;
+import com.exce.BusinessException;
+import com.exce.LogActions;
+import com.exce.WebConst;
+import com.entity.CommentDomain;
+import com.entity.ContentDomain;
+import com.entity.LogDomain;
+import com.entity.UserDomain;
 import com.service.log.LogService;
 import com.service.site.SiteService;
 import com.service.user.UserService;
-import com.utils.APIResponse;
-import com.utils.GsonUtils;
-import com.utils.TaleUtils;
+import com.utils.Res;
+import com.utils.Gso;
+import com.utils.Tale;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -89,7 +89,7 @@ public class IndexController extends BaseController {
      */
     @PostMapping(value = "/profile")
     @ResponseBody
-    public APIResponse saveProfile(
+    public Res saveProfile(
             @RequestParam String screenName,
             @RequestParam String email,
             HttpServletRequest request,
@@ -104,7 +104,7 @@ public class IndexController extends BaseController {
             // 更新数据
             userService.updateUserInfo(temp);
             // 写入日志
-            logService.addLog(LogActions.UP_INFO.getAction(), GsonUtils.toJsonString(temp),request.getRemoteAddr(),this.getUid(request));
+            logService.addLog(LogActions.UP_INFO.getAction(), Gso.toJsonString(temp),request.getRemoteAddr(),this.getUid(request));
 
             // 更新session中的数据
             UserDomain originAL = (UserDomain) session.getAttribute(WebConst.LOGIN_SESSION_KEY);
@@ -112,7 +112,7 @@ public class IndexController extends BaseController {
             originAL.setEmail(email);
             session.setAttribute(WebConst.LOGIN_SESSION_KEY, originAL);
         }
-        return APIResponse.success();
+        return Res.success();
     }
 
     /**
@@ -125,7 +125,7 @@ public class IndexController extends BaseController {
      */
     @PostMapping(value = "/password")
     @ResponseBody
-    public APIResponse upPwd(
+    public Res upPwd(
             @RequestParam String oldPassword,
             @RequestParam String newPassword,
             HttpServletRequest request,
@@ -133,21 +133,21 @@ public class IndexController extends BaseController {
     ) {
         UserDomain users = this.user(request);
         if (StringUtils.isBlank(oldPassword) || StringUtils.isBlank(newPassword)) {
-            return APIResponse.fail("请确认信息输入完整");
+            return Res.fail("请确认信息输入完整");
         }
 
-        if (!users.getPassword().equals(TaleUtils.MD5encode(users.getUsername() + oldPassword))) {
-            return APIResponse.fail("旧密码错误");
+        if (!users.getPassword().equals(Tale.MD5encode(users.getUsername() + oldPassword))) {
+            return Res.fail("旧密码错误");
         }
 
         if (newPassword.length() < 6 || newPassword.length() > 14) {
-            return APIResponse.fail("请输入6-14位密码");
+            return Res.fail("请输入6-14位密码");
         }
 
         try {
             UserDomain temp = new UserDomain();
             temp.setUid(users.getUid());
-            String pwd = TaleUtils.MD5encode(users.getUsername() + newPassword);
+            String pwd = Tale.MD5encode(users.getUsername() + newPassword);
             temp.setPassword(pwd);
             userService.updateUserInfo(temp);
             logService.addLog(LogActions.UP_PWD.getAction(), null,request.getRemoteAddr(),this.getUid(request));
@@ -156,7 +156,7 @@ public class IndexController extends BaseController {
             UserDomain originAL = (UserDomain) session.getAttribute(WebConst.LOGIN_SESSION_KEY);
             originAL.setPassword(pwd);
             session.setAttribute(WebConst.LOGIN_SESSION_KEY,originAL);
-            return APIResponse.success();
+            return Res.success();
         } catch (Exception e) {
             String msg = "密码修改失败";
             if (e instanceof BusinessException) {
@@ -164,7 +164,7 @@ public class IndexController extends BaseController {
             } else {
                 LOGGER.error(msg,e);
             }
-            return APIResponse.fail(msg);
+            return Res.fail(msg);
         }
     }
 

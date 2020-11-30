@@ -1,12 +1,12 @@
 package com.controller;
 
-import com.exception.LogActions;
-import com.exception.WebConst;
-import com.model.OptionsDomain;
+import com.exce.LogActions;
+import com.exce.WebConst;
+import com.entity.OptionsDomain;
 import com.service.log.LogService;
 import com.service.option.OptionService;
-import com.utils.APIResponse;
-import com.utils.GsonUtils;
+import com.utils.Res;
+import com.utils.Gso;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -52,7 +52,7 @@ public class SettingController extends BaseController {
     @ApiOperation("保存系统设置")
     @PostMapping(value = "")
     @ResponseBody
-    public APIResponse saveSetting(HttpServletRequest request) {
+    public Res saveSetting(HttpServletRequest request) {
 
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
@@ -66,12 +66,12 @@ public class SettingController extends BaseController {
             WebConst.initConfig = querys;
 
             // 写入日志
-            logService.addLog(LogActions.SYS_SETTING.getAction(), GsonUtils.toJsonString(querys),request.getRemoteAddr(),this.getUid(request));
-            return APIResponse.success();
+            logService.addLog(LogActions.SYS_SETTING.getAction(), Gso.toJsonString(querys),request.getRemoteAddr(),this.getUid(request));
+            return Res.success();
 
         } catch (Exception e) {
             String msg = "保存设置失败";
-            return APIResponse.fail(e.getMessage());
+            return Res.fail(e.getMessage());
         }
     }
 

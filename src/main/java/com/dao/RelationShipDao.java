@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.model.RelationShipDomain;
+import com.entity.RelationShipDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

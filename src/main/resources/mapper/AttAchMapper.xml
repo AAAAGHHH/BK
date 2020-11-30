@@ -24,7 +24,7 @@
 
 
     <!--新增单个附件-->
-    <insert id="addAttAch" parameterType="com.model.AttAchDomain">
+    <insert id="addAttAch" parameterType="com.entity.AttAchDomain">
         INSERT INTO
           <include refid="BASE_TABLE"/>
         <trim prefix="(" suffix=")" suffixOverrides=",">

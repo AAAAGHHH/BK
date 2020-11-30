@@ -2,16 +2,16 @@ package com.controller;
 
 import com.idrot.ContentCond;
 import com.idrot.MetaDto;
-import com.exception.BusinessException;
-import com.exception.ErrorConstant;
-import com.exception.Types;
-import com.exception.WebConst;
-import com.model.CommentDomain;
-import com.model.ContentDomain;
-import com.model.MetaDomain;
-import com.utils.APIResponse;
-import com.utils.IPKit;
-import com.utils.TaleUtils;
+import com.exce.BusinessException;
+import com.exce.ErrorConstant;
+import com.exce.Types;
+import com.exce.WebConst;
+import com.entity.CommentDomain;
+import com.entity.ContentDomain;
+import com.entity.MetaDomain;
+import com.utils.Res;
+import com.utils.Kit;
+import com.utils.Tale;
 import com.github.pagehelper.PageInfo;
 import com.vdurmont.emoji.EmojiParser;
 import com.service.article.ContentService;
@@ -183,54 +183,54 @@ public class HomeController extends BaseController {
 
     @PostMapping(value = "/comment")
     @ResponseBody
-    public APIResponse comment(HttpServletRequest request, HttpServletResponse response,
-                               @RequestParam(name = "cid", required = true) Integer cid,
-                               @RequestParam(name = "coid", required = false) Integer coid,
-                               @RequestParam(name = "author", required = false) String author,
-                               @RequestParam(name = "email", required = false) String email,
-                               @RequestParam(name = "url", required = false) String url,
-                               @RequestParam(name = "content", required = true) String content,
-                               @RequestParam(name = "csrf_token", required = true) String csrf_token
+    public Res comment(HttpServletRequest request, HttpServletResponse response,
+                       @RequestParam(name = "cid", required = true) Integer cid,
+                       @RequestParam(name = "coid", required = false) Integer coid,
+                       @RequestParam(name = "author", required = false) String author,
+                       @RequestParam(name = "email", required = false) String email,
+                       @RequestParam(name = "url", required = false) String url,
+                       @RequestParam(name = "content", required = true) String content,
+                       @RequestParam(name = "csrf_token", required = true) String csrf_token
                                ) {
 
         String ref = request.getHeader("Referer");
         if (StringUtils.isBlank(ref) || StringUtils.isBlank(csrf_token)){
-            return APIResponse.fail("访问失败");
+            return Res.fail("访问失败");
         }
 
         String token = cache.hget(Types.CSRF_TOKEN.getType(), csrf_token);
         if (StringUtils.isBlank(token)) {
-            return APIResponse.fail("访问失败");
+            return Res.fail("访问失败");
         }
 
         if (null == cid || StringUtils.isBlank(content)) {
-            return APIResponse.fail("请输入完整后评论");
+            return Res.fail("请输入完整后评论");
         }
 
         if (StringUtils.isNotBlank(author) && author.length() > 50) {
-            return APIResponse.fail("姓名过长");
+            return Res.fail("姓名过长");
         }
 
-        if (StringUtils.isNotBlank(email) && !TaleUtils.isEmail(email)) {
-            return APIResponse.fail("请输入正确的邮箱格式");
+        if (StringUtils.isNotBlank(email) && !Tale.isEmail(email)) {
+            return Res.fail("请输入正确的邮箱格式");
         }
 
-        if (StringUtils.isNotBlank(url) && !TaleUtils.isURL(url)) {
-            return APIResponse.fail("请输入正确的网址格式");
+        if (StringUtils.isNotBlank(url) && !Tale.isURL(url)) {
+            return Res.fail("请输入正确的网址格式");
         }
 
         if (content.length() > 200) {
-            return APIResponse.fail("请输入200个字符以内的评价");
+            return Res.fail("请输入200个字符以内的评价");
         }
 
-        String val = IPKit.getIpAddressByRequest1(request) + ":" + cid;
+        String val = Kit.getIpAddressByRequest1(request) + ":" + cid;
         Integer count = cache.hget(Types.COMMENTS_FREQUENCY.getType(), val);
         if (null != count && count > 0) {
-            return APIResponse.fail("您发表的评论太快了，请过会再试");
+            return Res.fail("您发表的评论太快了，请过会再试");
         }
 
-        author = TaleUtils.cleanXSS(author);
-        content = TaleUtils.cleanXSS(content);
+        author = Tale.cleanXSS(author);
+        content = Tale.cleanXSS(content);
 
         author = EmojiParser.parseToAliases(author);
         content = EmojiParser.parseToAliases(content);
@@ -255,7 +255,7 @@ public class HomeController extends BaseController {
             // 设置对每个文章1分钟可以评论一次
             cache.hset(Types.COMMENTS_FREQUENCY.getType(),val,1,60);
 
-            return APIResponse.success();
+            return Res.success();
 
         } catch (Exception e) {
             throw BusinessException.withErrorCode(ErrorConstant.Comment.ADD_NEW_COMMENT_FAIL);

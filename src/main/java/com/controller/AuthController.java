@@ -1,13 +1,13 @@
 package com.controller;
 
-import com.exception.BusinessException;
-import com.exception.LogActions;
-import com.exception.WebConst;
-import com.model.UserDomain;
+import com.exce.BusinessException;
+import com.exce.LogActions;
+import com.exce.WebConst;
+import com.entity.UserDomain;
 import com.service.log.LogService;
 import com.service.user.UserService;
-import com.utils.APIResponse;
-import com.utils.TaleUtils;
+import com.utils.Res;
+import com.utils.Tale;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -48,7 +48,7 @@ public class AuthController extends BaseController {
     @ApiOperation("登录")
     @PostMapping(value = "/login")
     @ResponseBody
-    public APIResponse toLogin(
+    public Res toLogin(
             HttpServletRequest request,
             HttpServletResponse response,
             @ApiParam(name = "username", value = "用户名", required = true)
@@ -69,7 +69,7 @@ public class AuthController extends BaseController {
             request.getSession().setAttribute(WebConst.LOGIN_SESSION_KEY, userInfo);
             // 判断是否勾选记住我
             if (StringUtils.isNotBlank(remember_me)) {
-                TaleUtils.setCookie(response, userInfo.getUid());
+                Tale.setCookie(response, userInfo.getUid());
             }
             // 写入日志
             logService.addLog(LogActions.LOGIN.getAction(), userInfo.getUsername()+"用户", request.getRemoteAddr(), userInfo.getUid());
@@ -77,7 +77,7 @@ public class AuthController extends BaseController {
             LOGGER.error(e.getMessage());
             error_count = null == error_count ? 1 : error_count + 1;
             if (error_count > 3) {
-                return APIResponse.fail("您输入密码已经错误超过3次，请10分钟后尝试");
+                return Res.fail("您输入密码已经错误超过3次，请10分钟后尝试");
             }
             System.out.println(error_count);
             // 设置缓存为10分钟
@@ -88,10 +88,10 @@ public class AuthController extends BaseController {
             } else {
                 LOGGER.error(msg,e);
             }
-            return APIResponse.fail(msg);
+            return Res.fail(msg);
         }
         // 返回登录成功信息
-        return APIResponse.success();
+        return Res.success();
     }
 
     @RequestMapping(value = "/logout")

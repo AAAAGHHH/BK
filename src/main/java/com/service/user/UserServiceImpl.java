@@ -1,10 +1,10 @@
 package com.service.user;
 
 import com.dao.UserDao;
-import com.exception.BusinessException;
-import com.exception.ErrorConstant;
-import com.model.UserDomain;
-import com.utils.TaleUtils;
+import com.exce.BusinessException;
+import com.exce.ErrorConstant;
+import com.entity.UserDomain;
+import com.utils.Tale;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password))
             throw BusinessException.withErrorCode(ErrorConstant.Auth.USERNAME_PASSWORD_IS_EMPTY);
     
-        String pwd = TaleUtils.MD5encode(username + password);
+        String pwd = Tale.MD5encode(username + password);
         UserDomain user = userDao.getUserInfoByCond(username,pwd);
         if (null == user)
             throw BusinessException.withErrorCode(ErrorConstant.Auth.USERNAME_PASSWORD_ERROR);

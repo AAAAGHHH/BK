@@ -13,7 +13,7 @@
     </sql>
     
     <!--添加评论-->
-    <insert id="addComment" parameterType="com.model.CommentDomain">
+    <insert id="addComment" parameterType="com.entity.CommentDomain">
         INSERT INTO
           <include refid="BASE_TABLE"/>
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -37,7 +37,7 @@
         </trim>
     </insert>
     <!--根据文章ID获取评论-->
-    <select id="getCommentByCId" resultType="com.model.CommentDomain">
+    <select id="getCommentByCId" resultType="com.entity.CommentDomain">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM
@@ -67,7 +67,7 @@
     </select>
     
     <!--根据条件查找评论列表-->
-    <select id="getCommentsByCond" resultType="com.model.CommentDomain" parameterType="com.idrot.CommentCond">
+    <select id="getCommentsByCond" resultType="com.entity.CommentDomain" parameterType="com.idrot.CommentCond">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM
@@ -90,7 +90,7 @@
     </select>
     
     <!--通过ID获取评论-->
-    <select id="getCommentById" resultType="com.model.CommentDomain">
+    <select id="getCommentById" resultType="com.entity.CommentDomain">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM

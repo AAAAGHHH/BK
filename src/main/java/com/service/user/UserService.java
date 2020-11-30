@@ -1,6 +1,6 @@
 package com.service.user;
 
-import com.model.UserDomain;
+import com.entity.UserDomain;
 
 /**
  * 用户相关Service接口

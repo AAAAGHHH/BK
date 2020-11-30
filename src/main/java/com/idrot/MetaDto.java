@@ -1,7 +1,7 @@
 
  package com.idrot;
 
-import com.model.MetaDomain;
+import com.entity.MetaDomain;
 
 /**
  * 标签、分类列表

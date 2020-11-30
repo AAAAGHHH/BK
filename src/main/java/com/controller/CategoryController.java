@@ -1,11 +1,11 @@
 package com.controller;
 
 import com.idrot.MetaDto;
-import com.exception.BusinessException;
-import com.exception.Types;
-import com.exception.WebConst;
+import com.exce.BusinessException;
+import com.exce.Types;
+import com.exce.WebConst;
 import com.service.meta.MetaService;
-import com.utils.APIResponse;
+import com.utils.Res;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -42,7 +42,7 @@ public class CategoryController extends BaseController {
     @ApiOperation("保存分类")
     @PostMapping(value = "/save")
     @ResponseBody
-    public APIResponse addCategory(
+    public Res addCategory(
             @ApiParam(name = "cname", value = "分类名", required = true)
             @RequestParam(name = "cname", required = true)
             String cname,
@@ -61,15 +61,15 @@ public class CategoryController extends BaseController {
                 msg = ex.getErrorCode();
             }
             LOGGER.error(msg, e);
-            return APIResponse.fail(msg);
+            return Res.fail(msg);
         }
-        return APIResponse.success();
+        return Res.success();
     }
 
     @ApiOperation("删除分类")
     @PostMapping(value = "/delete")
     @ResponseBody
-    public APIResponse deleteCategory(
+    public Res deleteCategory(
             @ApiParam(name = "mid", value = "meta编号", required = true)
             @RequestParam(name = "mid", required = true)
             Integer mid
@@ -79,9 +79,9 @@ public class CategoryController extends BaseController {
         } catch (Exception e) {
             e.printStackTrace();
             LOGGER.error(e.getMessage());
-            return APIResponse.fail(e.getMessage());
+            return Res.fail(e.getMessage());
         }
-        return APIResponse.success();
+        return Res.success();
 
     }
 

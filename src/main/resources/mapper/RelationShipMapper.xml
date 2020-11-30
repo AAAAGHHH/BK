@@ -12,7 +12,7 @@
     </sql>
      
     <!--根据meta编号获取对应的标签或则分类-->
-    <select id="getRelationShipByMid" resultType="com.model.RelationShipDomain">
+    <select id="getRelationShipByMid" resultType="com.entity.RelationShipDomain">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM
@@ -51,7 +51,7 @@
     </select>
     
     <!--添加-->
-    <insert id="addRelationShip" parameterType="com.model.RelationShipDomain">
+    <insert id="addRelationShip" parameterType="com.entity.RelationShipDomain">
         INSERT INTO
           <include refid="BASE_TABLE"/>
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -64,7 +64,7 @@
     </insert>
     
     <!--根据文章ID获取对应的标签或分类-->
-    <select id="getRelationShipByCid" resultType="com.model.RelationShipDomain">
+    <select id="getRelationShipByCid" resultType="com.entity.RelationShipDomain">
         SELECT
           <include refid="BASE_COLUMN"/>
         FROM

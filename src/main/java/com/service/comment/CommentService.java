@@ -1,7 +1,7 @@
 package com.service.comment;
 
 import com.idrot.CommentCond;
-import com.model.CommentDomain;
+import com.entity.CommentDomain;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;

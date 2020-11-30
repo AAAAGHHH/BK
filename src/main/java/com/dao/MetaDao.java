@@ -2,7 +2,7 @@ package com.dao;
 
 import com.idrot.MetaCond;
 import com.idrot.MetaDto;
-import com.model.MetaDomain;
+import com.entity.MetaDomain;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
